@@ -161,3 +161,8 @@ Em outro terminal:
 ```bash
 streamlit run main.py
 ```
+
+---
+## 8. Transparência do Uso de Inteligência Artificial  
+
+As imagens da pasta assets e o presente README foram gerados com o auxílio de Inteligência Artificial, mais especificamente os modelos Gemini 3.6 Flash para as imagens e GPT-5.6 Luna para o README. Todo conteúdo gerado foi eventualmente revisado por um humano para garantir integridade e qualidade.
