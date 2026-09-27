@@ -39,7 +39,7 @@ Cada bloco possui informações que permitem relacioná-lo ao bloco anterior, fo
 
 ### Fluxo básico
 
-![fluxo](assets\fluxo.jpg)
+![fluxo](assets/fluxo.jpg)
 
 ---
 
