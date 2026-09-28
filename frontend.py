@@ -76,7 +76,6 @@ def frontend():
             "Adicionar candidato",
             "Votar",
             "Resultados",
-            "Gráfico da eleição",
             "Blockchain"
         ]
     )
@@ -167,19 +166,12 @@ def frontend():
                     + ("s" if count != 1 else "")
                 )
 
-        else:
-            st.info("Ainda não existem votos registrados.")
+            sorted_votes = votes()
+            st.subheader("Gráfico da eleição")
+            st.caption(f"Última atualização: {last_update()}")
 
-
-    # MENU PARA VISUALIZAR O GRÁFICO
-    elif menu == "Gráfico da eleição":
-        sorted_votes = votes()
-
-        st.subheader("Gráfico da eleição")
-        st.caption(f"Última atualização: {last_update()}")
-
-        if sorted_votes:
             plot_results_chart(sorted_votes)
+
         else:
             st.info("Ainda não existem votos registrados.")
 
