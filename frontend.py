@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 from datetime import datetime
 
-import backend
 from style import load_style, metric_card
 
 API_URL = "http://127.0.0.1:8000"
@@ -206,9 +205,11 @@ def frontend():
 
         st.markdown("### Download")
 
-        blockchain_json = backend.export_blockchain()
+        response = requests.get(f"{API_URL}/download")
+        blockchain_json = response.json()
+
         st.download_button(
-            label="⬇️ Baixar Blockchain (.json)",
+            label="Download Blockchain (.json)",
             data=blockchain_json,
             file_name="blockchain.json",
             mime="application/json"
