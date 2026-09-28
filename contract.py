@@ -8,19 +8,19 @@ class VotingContract:
         self.cpf = CPF()
 
     def validate_vote(self, candidate, voter_cpf, candidates):
-        # Regra 1: deve existir pelo menos um candidato
+        # deve existir pelo menos um candidato
         if not candidates:
             return False, "There are no registered candidates"
 
-        # Regra 2: o candidato escolhido deve existir
+        # Regra 1: o candidato escolhido deve existir
         if candidate not in candidates:
             return False, "Invalid candidate"
 
-        # Regra 3: o CPF deve ser válido
+        # Regra 2: o CPF deve ser válido
         if not self.cpf.validate(voter_cpf):
             return False, "Invalid CPF"
 
-        # Regra 4: um eleitor só pode votar uma vez
+        # Regra 3: um eleitor só pode votar uma vez
         voter_id_hash = hashlib.sha256(
             voter_cpf.encode()
         ).hexdigest()
