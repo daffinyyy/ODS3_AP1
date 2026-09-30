@@ -25,6 +25,17 @@ voting_contract = VotingContract(blockchain)
 def get_chain():
     return blockchain.get_chain()
 
+@app.get("/chain/valid")
+def validate_blockchain():
+    try:
+        blockchain.reload()
+        return {"valid": blockchain.is_valid()}
+    except Exception as e:
+        return {
+            "valid": False,
+            "message": str(e)
+        }
+
 @app.get("/result")
 def get_sorted_votes():
     votes = blockchain.get_votes()

@@ -29,6 +29,7 @@ class Blockchain:
         genesis_block = Block(0, time(), "0", None, None)
         genesis_block.proof_of_work(self.__difficulty)
         self.__chain.append(genesis_block)
+        self.save_to_file()
 
         print("Genesis block created.")
 
@@ -47,6 +48,13 @@ class Blockchain:
                 return False
 
         return True
+
+    def reload(self):
+        self.load_from_file()
+
+    def is_valid(self):
+        """retorna pubblicamente o resultado de __is_blockchain_valid"""
+        return self.__is_blockchain_valid()
 
     def save_to_file(self):
         blockchain_json = json.dumps(self.get_chain(), indent=4)

@@ -180,8 +180,15 @@ def frontend():
     elif menu == "Blockchain":
         st.subheader("Histórico da Blockchain")
 
-        chain = blockchain()
+        validation_response = requests.get(f"{API_URL}/chain/valid")
+        blockchain_valid = validation_response.json()["valid"]
+        if not blockchain_valid:
+            st.error(
+                "⚠️ Blockchain comprometida! "
+                "Foram detectadas inconsistências na integridade da cadeia."
+            )
 
+        chain = blockchain()
         col1, col2 = st.columns(2)
         with col1:
             metric_card(
